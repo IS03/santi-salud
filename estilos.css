@@ -1,4 +1,3 @@
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -30,7 +29,8 @@ header {
   text-align: center;
   width: 100%;
   max-width: none;
-  padding: 30px 15px;
+  padding: 30px 15px 50px;
+  position: relative;
 }
 
 header h1 {
@@ -39,15 +39,23 @@ header h1 {
   font-family: 'Poppins', sans-serif;
 }
 
+header p {
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
 h2 {
   color: #2BA889;
   margin-top: 0;
   font-family: 'Poppins', sans-serif;
   text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
 }
 
 h3 {
   font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
 }
 
 .cta {
@@ -59,10 +67,14 @@ h3 {
   text-decoration: none;
   border-radius: 4px;
   transition: all 0.3s ease;
-  position: relative;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
   overflow: hidden;
   z-index: 1;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
 }
 
 .cta:before {
@@ -79,8 +91,7 @@ h3 {
 
 .cta:hover {
   background: #1A9F8F;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .cta:hover:before {
@@ -89,7 +100,7 @@ h3 {
 
 .testimonial {
   background: white;
-  padding: 15px;
+  padding: 30px;
   margin: 15px 0;
   border-left: 4px solid #2BA889;
 }
@@ -149,11 +160,12 @@ footer {
 .footer-container p {
   margin-bottom: 8px;
   line-height: 1.6;
+  font-size: 0.9rem;
 }
 
 .footer-container strong {
   color: #eee;
-  font-size: 1.1em;
+  font-size: 1.1rem;
 }
 
 .social-links a {
@@ -199,6 +211,16 @@ footer {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+.social-links a[href*="maps.app.goo.gl"] {
+  background: #2BA889;
+  color: white;
+}
+
+.social-links a[href*="maps.app.goo.gl"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
 .footer-container > p {
   text-align: center;
   margin-top: 20px;
@@ -210,6 +232,68 @@ footer {
 @media (max-width: 768px) {
   .footer-container {
     padding: 0 15px;
+    gap: 20px;
+  }
+
+  .footer-right {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: flex;
+  }
+
+  .mobile-social-tabs {
+    position: fixed;
+    top: auto;
+    bottom: 20px;
+    right: 0;
+    width: 40px;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 9999;
+    transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s ease;
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
+    background: rgba(43, 168, 137, 0.2);
+    backdrop-filter: blur(5px);
+  }
+
+  .social-tab {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px 0 0 8px;
+    background-size: 50% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+    transition: all 0.3s ease;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+  }
+
+  .social-tab:hover {
+    width: 50px;
+  }
+
+  .instagram { 
+    background-color: #E1306C;
+    background-image: url('https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png');
+  }
+  
+  .facebook { 
+    background-color: #1877F2;
+    background-image: url('https://img.icons8.com/ios-filled/50/ffffff/facebook.png');
+  }
+  
+  .whatsapp { 
+    background-color: #25D366;
+    background-image: url('https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png');
+  }
+  
+  .location { 
+    background-color: #2BA889;
+    background-image: url('https://img.icons8.com/ios-filled/50/ffffff/marker.png');
   }
 }
 
@@ -293,13 +377,14 @@ footer {
   text-align: center;
   color: #2BA889;
   margin-bottom: 25px;
+  font-size: 1.8rem;
 }
 
 .modal-contenido p {
   text-align: center;
   color: #444;
   margin-bottom: 25px;
-  font-size: 1.1em;
+  font-size: 1.1rem;
 }
 
 .modal-contenido form input,
@@ -347,18 +432,18 @@ footer {
   .modal-contenido {
     width: 95%;
     margin: 10px;
-    padding: 30px 20px;
+    padding: 25px 20px;
   }
 
   .modal-contenido h2 {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
   }
 
   .modal-contenido form input,
   .modal-contenido form textarea,
   .modal-contenido form button {
-    font-size: 1rem;
-    padding: 12px;
+    font-size: 0.9rem;
+    padding: 10px;
     margin-bottom: 15px;
   }
 }
@@ -393,7 +478,7 @@ footer {
 #planes .plan {
   background: #fff;
   border-radius: 16px;
-  padding: 35px 30px;
+  padding: 25px 20px;
   margin: 0;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
@@ -433,16 +518,17 @@ footer {
 }
 
 #planes .plan h3 {
-  margin: 0 0 20px;
+  margin: 0 0 15px;
   color: #2BA889;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
 }
 
 #planes .plan p {
   color: #666;
-  margin-bottom: 25px;
-  line-height: 1.6;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  font-size: 0.95rem;
 }
 
 #planes .plan ul {
@@ -453,10 +539,11 @@ footer {
 }
 
 #planes .plan ul li {
-  padding: 10px 0;
+  padding: 6px 0;
   color: #444;
   position: relative;
   padding-left: 25px;
+  font-size: 0.95rem;
 }
 
 #planes .plan ul li::before {
@@ -480,15 +567,27 @@ footer {
   .planes-container {
     grid-template-columns: 1fr;
     gap: 20px;
-    padding: 0 10px;
+    padding: 0 60px 0 10px;
   }
 
   #planes .plan {
-    padding: 25px 20px;
+    padding: 20px 15px;
   }
 
   #planes .plan h3 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  #planes .plan p {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+  }
+
+  #planes .plan ul li {
+    font-size: 0.85rem;
+    padding: 4px 0;
+    padding-left: 20px;
   }
 }
 
@@ -534,29 +633,36 @@ footer {
 
 .faq-respuesta p {
   text-align: left;
+  font-size: 0.95rem;
 }
 
 /* IMC Calculadora */
 #imc {
-  padding: 60px 20px;
-  margin-bottom: 40px;
+  padding: 40px 70px 40px 20px;
+  margin-bottom: 30px;
 }
 
 #imc h2 {
   margin-bottom: 30px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  font-size: 2rem;
 }
 
 .imc-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 30px;
+  gap: 20px;
   align-items: center;
-  background: #fff;
-  border-radius: 12px;
+  background: rgba(43, 168, 137, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
   padding: 30px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
   width: 100%;
+  max-width: 600px;
+  margin: 30px auto;
 }
 
 .imc-controles {
@@ -569,10 +675,13 @@ footer {
 }
 
 .campo label {
-  font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 600;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   text-align: center;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
 }
 
 .control {
@@ -585,80 +694,140 @@ footer {
 
 .control input[type="range"] {
   flex: 1;
-  min-width: 0;
+  min-width: 100px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #ddd;
+  border-radius: 5px;
+  height: 8px;
+  outline: none;
+  transition: opacity .2s;
+}
+
+.control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #2BA889;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.control input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #2BA889;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .control input[type="number"] {
   width: 80px;
   text-align: center;
-  max-width: 70px;
-  min-width: 70px;
-  padding: 6px 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
+  padding: 8px 12px;
+  border: 2px solid #2BA889;
+  border-radius: 8px;
   font-weight: bold;
   color: #2c2c2c;
   outline: none;
-  border: 2px solid #2BA889;
+  transition: border-color 0.3s ease;
+}
+
+.control input[type="number"]:focus {
+  border-color: #1A9F8F;
+  box-shadow: 0 0 5px rgba(43, 168, 137, 0.3);
 }
 
 .imc-resultado {
   flex: 1 1 250px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .imc-resultado .titulo {
-  font-weight: bold;
-  color: #444;
+  font-weight: 600;
+  color: #555;
   margin-bottom: 10px;
+  font-size: 1rem;
 }
 
 #imc-valor {
-  font-size: 48px;
-  font-weight: bold;
+  font-size: 3.5rem;
+  font-weight: 700;
   color: #2BA889;
+  margin-bottom: 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.clasificacion-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   margin-bottom: 10px;
 }
 
 .clasificacion {
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.clasificacion-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+}
+
+.clasificacion-badge.bajo-peso {
+  background: #FFC107;
+}
+
+.clasificacion-badge.peso-normal {
+  background: #28A745;
+}
+
+.clasificacion-badge.exceso-peso {
+  background: #FD7E14;
+}
+
+.clasificacion-badge.obesidad-grado-i {
+  background: #DC3545;
+}
+
+.clasificacion-badge.obesidad-grado-ii {
+  background: #E57373;
+}
+
+.clasificacion-badge.obesidad-grado-iii {
+  background: #B71C1C;
 }
 
 .riesgo {
-  color: #444;
-  font-weight: bold;
+  color: #555;
+  font-weight: 500;
+  font-size: 0.8rem;
 }
 
 /* Ajustes responsivos */
 @media (max-width: 768px) {
-  header h1 {
-    font-size: 1.8rem;
-  }
-
-  .modal-contenido {
-    width: 95%;
-    margin: 10px;
-    padding: 30px 20px;
-  }
-
-  .modal-contenido h2 {
-    font-size: 1.8rem;
-  }
-
-  .modal-contenido form input,
-  .modal-contenido form textarea,
-  .modal-contenido form button {
-    font-size: 1rem;
-    padding: 12px;
-    margin-bottom: 15px;
-  }
-
-  /* Ajustes para la calculadora IMC en móvil */
   .imc-container {
     flex-direction: column;
-    gap: 20px;
-    padding: 20px 15px;
+    gap: 15px;
+    padding: 20px;
+    margin: 15px auto;
+    max-width: 95%;
   }
 
   .imc-controles,
@@ -668,36 +837,53 @@ footer {
   }
 
   .campo {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+  }
+
+  .campo label {
+    font-size: 1rem;
+    margin-bottom: 8px;
   }
 
   .control {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: nowrap;
   }
 
-
   .control input[type="number"] {
-    width: 100%;
-    text-align: left;
+    width: 80px;
+    text-align: center;
     padding: 8px;
   }
 
   #imc-valor {
-    font-size: 36px;
-    margin-bottom: 8px;
+    font-size: 3rem;
+    margin-bottom: 10px;
   }
 
-  .clasificacion,
+  .clasificacion-container {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .clasificacion {
+    font-size: 0.9rem;
+  }
+
+  .clasificacion-badge {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+
   .riesgo {
-    font-size: 0.9em;
+    font-size: 0.8rem;
   }
 
   #imc {
-    padding: 40px 20px;
+    padding: 40px 70px 40px 20px;
     margin-bottom: 30px;
   }
 }
@@ -718,7 +904,7 @@ footer {
 .testimonios-container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 60px 0 0;
   overflow: hidden;
   position: relative;
 }
@@ -974,12 +1160,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;.control {
-  flex-direction: column;
-  align-items: stretch;
-  gap: 8px;
-}
-
+    width: 100%;
   }
 
   .footer-right .social-links a {
@@ -1011,4 +1192,329 @@ img {
   font-weight: bold;
   color: #333;
 }
+
+@media (max-width: 768px) {
+  .mobile-social-tabs {
+    position: fixed;
+    top: auto;
+    bottom: 20px;
+    right: 0;
+    width: 40px;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 9999;
+    transition: transform 0.4s ease, opacity 0.4s ease, visibility 0.4s ease;
+    transform: translateX(0);
+    visibility: visible;
+    opacity: 1;
+    background: rgba(43, 168, 137, 0.2);
+    backdrop-filter: blur(5px);
+  }
+
+  .social-tab {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px 0 0 8px;
+    background-size: 50% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block;
+    transition: all 0.3s ease;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+  }
+
+  .social-tab:hover {
+    width: 50px;
+  }
+
+  .instagram { 
+    background-color: #E1306C;
+    background-image: url('https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png');
+  }
+  
+  .facebook { 
+    background-color: #1877F2;
+    background-image: url('https://img.icons8.com/ios-filled/50/ffffff/facebook.png');
+  }
+  
+  .whatsapp { 
+    background-color: #25D366;
+    background-image: url('https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png');
+  }
+  
+  .location { 
+    background-color: #2BA889;
+    background-image: url('https://img.icons8.com/ios-filled/50/ffffff/marker.png');
+  }
+}
+
+/* Estilos del menú móvil */
+.mobile-menu-button {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+  cursor: pointer;
+  z-index: 1000;
+  padding: 15px 5px;
+  background: rgba(43, 168, 137, 0.2);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-button span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  margin-bottom: 5px;
+}
+
+.mobile-menu-button.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-button.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-button.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.mobile-menu-button.active {
+  background: rgba(43, 168, 137, 0.1);
+}
+
+.mobile-menu-button.scrolled span {
+  background-color: #2BA889;
+}
+
+/* Hide the original close button */
+.close-menu {
+  display: none;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -70%;
+  width: 70%;
+  height: 100vh;
+  background: rgba(43, 168, 137, 0.2);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+}
+
+.mobile-menu.active {
+  right: 0;
+}
+
+.mobile-menu.scrolled .mobile-menu-header h3,
+.mobile-menu.scrolled .close-menu {
+  color: #2BA889;
+}
+
+.mobile-menu.scrolled .mobile-nav a {
+  color: #000000;
+}
+
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  transition: border-color 0.3s ease;
+}
+
+.mobile-menu.scrolled .mobile-menu-header {
+  border-bottom-color: #2BA889;
+}
+
+.mobile-menu-header h3 {
+  margin: 0;
+  color: #ffffff;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 8px;
+}
+
+.mobile-nav a {
+  color: #333;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  margin: 0 10px;
+  border: none;
+}
+
+.mobile-nav a:hover {
+  color: #2BA889;
+  background: rgba(43, 168, 137, 0.05);
+}
+
+.mobile-nav a.active {
+  color: #2BA889;
+  background: rgba(43, 168, 137, 0.1);
+}
+
+.mobile-nav a:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-button {
+    display: flex;
+  }
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 40px 60px 40px 20px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 20px;
+}
+
+/* Estilos del menú de navegación de escritorio */
+.desktop-nav {
+  position: fixed; /* Siempre fijo en desktop */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(43, 168, 137, 0.5); /* Fondo más transparente para blur */
+  backdrop-filter: blur(12px); /* Mayor nivel de blur */
+  box-shadow: none; /* Sin sombra inicialmente */
+  z-index: 1000; /* Asegurar que esté por encima de otros elementos */
+  padding: 15px 40px; /* Padding inicial (altura 50px + padding) */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateY(-100%); /* Inicialmente fuera de la pantalla */
+  transition: transform 0.4s ease-in-out, padding 0.4s ease-in-out, height 0.4s ease-in-out; /* Transición suave para varias propiedades */
+  height: 50px; /* Altura inicial */
+}
+
+/* Estado fijo y achicado al hacer scroll */
+/* Usaremos .scrolled (añadida por JS) en lugar de is-fixed */
+.desktop-nav.scrolled {
+  transform: translateY(0); /* Deslizar a la vista */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 10px 40px; /* Padding reducido */
+  height: 40px; /* Altura achicada */
+}
+
+.desktop-nav .logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2BA889;
+  font-family: 'Poppins', sans-serif;
+}
+
+.desktop-nav .logo img {
+  height: 125px;
+  width: auto;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.desktop-nav .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.desktop-nav .nav-links a {
+  color: rgb(240, 244, 220);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.75rem;
+  transition: all 0.3s ease;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.desktop-nav .nav-links a:hover {
+  color: #2BA889;
+  background: rgba(43, 168, 137, 0.1);
+}
+
+.desktop-nav .nav-links a:active {
+  color: #fff;
+  background: rgba(43, 168, 137, 0.5);
+  transform: scale(0.98);
+}
+
+/* Estilo para el botón destacado */
+.desktop-nav .nav-links .btn-contacto {
+  background: #2a6f4e;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.desktop-nav .nav-links .btn-contacto:hover {
+  background: #1d5c3c;
+  color: white;
+}
+
+/* Mostrar el menú de escritorio y ajustar padding del body en desktop */
+@media (min-width: 769px) {
+  .desktop-nav {
+    display: flex; /* Mostrar y usar flexbox solo en desktop */
+    /* El padding-top del body se manejará con la altura de la nav */
+  }
+
+  /* Ocultar el menú móvil y su botón en desktop */
+  .mobile-menu,
+  .mobile-menu-button {
+    display: none !important;
+  }
+
+  /* Ajustar padding del body para el menú fijo de desktop */
+  /* body { padding-top: 60px; } */ /* Removido, el padding se ajusta dinámicamente si es necesario */
+}
+
+@media (max-width: 768px) {
+  /* Asegurar que la barra de escritorio esté oculta en móvil */
+  .desktop-nav {
+    display: none !important;
+  }
+
+  /* Asegurar que el body no tenga padding top en móvil */
+  body {
+    padding-top: 0;
+  }
+}
+
   

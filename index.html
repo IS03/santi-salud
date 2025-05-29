@@ -8,11 +8,48 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   </head>
   <body>
+    <!-- Menú móvil -->
+    <div class="mobile-menu-button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="mobile-menu">
+      <div class="mobile-menu-header">
+        <h3>Menú</h3>
+        <button class="close-menu">×</button>
+      </div>
+      <nav class="mobile-nav">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#consultorio-fisico">Consultorio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#planes">Planes</a>
+        <a href="#faq">Preguntas Frecuentes</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#imc">Calculadora IMC</a>
+      </nav>
+    </div>
+    <!-- Menú de Navegación para Desktop (inicialmente oculto) -->
+    <nav class="desktop-nav">
+      <div class="logo"><img src="/logo.png" alt="Logo Santiago Nutrición"></div>
+      <div class="nav-links">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#consultorio-fisico">Consultorio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#planes">Planes</a>
+        <a href="#faq">Preguntas Frecuentes</a>
+        <a href="#testimonios">Testimonios</a>
+      </div>
+    </nav>
     <header>
       <h1>¡Bienvenido! Soy Santiago</h1>
       <p>Licenciado en Nutrición Deportiva | Asesoramiento personalizado para deportistas y personas activas</p>
-      <a class="cta" href="#">Reservá tu primera consulta gratuita</a>
+      <a class="cta" href="#">Reservá tu consulta</a>
     </header>
+
     <section id="sobre-mi">
       <h2>Sobre mí</h2>
       <div class="section-content">
@@ -191,7 +228,10 @@
         <div class="imc-resultado">
           <p class="titulo">Tu IMC es</p>
           <div id="imc-valor">—</div>
-          <p class="clasificacion" id="imc-clasificacion"></p>
+          <div class="clasificacion-container">
+            <p class="clasificacion" id="imc-clasificacion"></p>
+            <span class="clasificacion-badge"></span>
+          </div>
           <p class="riesgo" id="imc-riesgo"></p>
         </div>
       </div>
@@ -223,13 +263,20 @@
         <div class="footer-right">
           <div class="social-links">
             <a href="https://instagram.com/santi.salud" target="_blank">Instagram</a>
-            <a href="https://facebook.com/santy7momo".com" target="_blank">Facebook</a>
+            <a href="https://facebook.com/santy7momo" target="_blank">Facebook</a>
             <a href="https://wa.me/+5493517431175" target="_blank">WhatsApp</a>
+            <a href="https://maps.app.goo.gl/jLy5Yo3pcgidt99Z9" target="_blank">Ubicación</a>
           </div>
         </div>
-        <p class="footer-bottom-text">© 2025 Santiago | Nutrición Deportiva</p>
+        <p class="footer-bottom-text">© 2025 Desarollo IS | Santiago Nutrición Deportiva</p>
       </div>
     </footer>
+    <div class="mobile-social-tabs">
+      <a href="https://instagram.com/santi.salud" target="_blank" class="social-tab instagram" title="Instagram"></a>
+      <a href="https://facebook.com/santy7momo" target="_blank" class="social-tab facebook" title="Facebook"></a>
+      <a href="https://wa.me/+5493517431175" target="_blank" class="social-tab whatsapp" title="WhatsApp"></a>
+      <a href="https://maps.app.goo.gl/jLy5Yo3pcgidt99Z9" target="_blank" class="social-tab location" title="Maps"></a>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

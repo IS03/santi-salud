@@ -48,27 +48,43 @@ function actualizarIMC() {
   const valor = document.getElementById('imc-valor');
   const clasificacion = document.getElementById('imc-clasificacion');
   const riesgo = document.getElementById('imc-riesgo');
+  const badge = document.querySelector('.clasificacion-badge');
 
   valor.textContent = imcRedondeado;
+
+  // Limpiar clases anteriores del badge
+  badge.classList.remove('bajo-peso', 'peso-normal', 'exceso-peso', 'obesidad-grado-i', 'obesidad-grado-ii', 'obesidad-grado-iii');
 
   if (imc < 18.5) {
     clasificacion.textContent = "Clasificación de peso: Bajo peso";
     riesgo.textContent = "Riesgo de enfermedad relacionada: Bajo";
+    badge.textContent = "Bajo peso";
+    badge.classList.add('bajo-peso');
   } else if (imc < 25) {
     clasificacion.textContent = "Clasificación de peso: Peso normal";
     riesgo.textContent = "Riesgo de enfermedad relacionada: Promedio";
+    badge.textContent = "Peso normal";
+    badge.classList.add('peso-normal');
   } else if (imc < 30) {
     clasificacion.textContent = "Clasificación de peso: Exceso de peso";
     riesgo.textContent = "Riesgo de enfermedad relacionada: Aumento del riesgo";
+    badge.textContent = "Exceso de peso";
+    badge.classList.add('exceso-peso');
   } else if (imc < 35) {
     clasificacion.textContent = "Clasificación de peso: Obesidad grado I";
     riesgo.textContent = "Riesgo de enfermedad relacionada: Moderado";
+    badge.textContent = "Obesidad grado I";
+    badge.classList.add('obesidad-grado-i');
   } else if (imc < 40) {
     clasificacion.textContent = "Clasificación de peso: Obesidad grado II";
     riesgo.textContent = "Riesgo de enfermedad relacionada: Alto";
+    badge.textContent = "Obesidad grado II";
+    badge.classList.add('obesidad-grado-ii');
   } else {
     clasificacion.textContent = "Clasificación de peso: Obesidad grado III";
     riesgo.textContent = "Riesgo de enfermedad relacionada: Muy alto";
+    badge.textContent = "Obesidad grado III";
+    badge.classList.add('obesidad-grado-iii');
   }
 }
 
@@ -174,4 +190,105 @@ document.addEventListener('DOMContentLoaded', () => {
   slides.forEach(slide => {
     observer.observe(slide);
   });
+});
+
+// Control de aparición de pestañas sociales
+document.addEventListener('DOMContentLoaded', () => {
+  const socialTabs = document.querySelector('.mobile-social-tabs');
+  
+  // Esperar 0.5 segundos antes de mostrar las pestañas
+  setTimeout(() => {
+    if (socialTabs) {
+      socialTabs.classList.add('visible');
+    }
+  }, 500);
+});
+
+// Control del menú móvil
+document.addEventListener('DOMContentLoaded', () => {
+  const menuButton = document.querySelector('.mobile-menu-button');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const closeButton = document.querySelector('.close-menu');
+  const menuLinks = document.querySelectorAll('.mobile-nav a');
+  const header = document.querySelector('header');
+
+  // Función para controlar el color del botón según el scroll
+  function updateMenuButtonColor() {
+    const headerBottom = header.offsetTop + header.offsetHeight;
+    if (window.scrollY > headerBottom - 50) {
+      menuButton.classList.add('scrolled');
+      mobileMenu.classList.add('scrolled');
+    } else {
+      menuButton.classList.remove('scrolled');
+      mobileMenu.classList.remove('scrolled');
+    }
+  }
+
+  // Actualizar color al cargar y al hacer scroll
+  window.addEventListener('scroll', updateMenuButtonColor);
+  updateMenuButtonColor();
+
+  // Abrir/Cerrar menú y transformar botón
+  menuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    menuButton.classList.toggle('active'); // Toggle active class on the button itself
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  menuLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      // Agregar clase para la animación
+      link.classList.add('active');
+      
+      // Cerrar el menú con una animación suave
+      mobileMenu.classList.remove('active');
+      menuButton.classList.remove('active');
+      
+      // Esperar a que el menú se cierre antes de hacer scroll
+      setTimeout(() => {
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+        // Remover la clase de animación después de un tiempo
+        setTimeout(() => {
+          link.classList.remove('active');
+        }, 500);
+      }, 300);
+    });
+  });
+
+  // Cerrar menú al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    if (!mobileMenu.contains(e.target) && !menuButton.contains(e.target)) {
+      mobileMenu.classList.remove('active');
+      menuButton.classList.remove('active'); // Also remove active class from button when closing by clicking outside
+    }
+  });
+});
+
+// Control de la barra de navegación de escritorio (aparece y se achica al scrollear pasado el header)
+document.addEventListener('DOMContentLoaded', () => {
+  const desktopNav = document.querySelector('.desktop-nav');
+  const header = document.querySelector('header');
+
+  function updateDesktopNavAppearance() {
+    const headerBottom = header.getBoundingClientRect().bottom;
+
+    if (window.innerWidth >= 769) { // Solo en desktop
+      if (headerBottom <= 0) {
+        desktopNav.classList.add('scrolled');
+      } else {
+        desktopNav.classList.remove('scrolled');
+      }
+    } else {
+      desktopNav.classList.remove('scrolled'); // Asegurar estado inicial en móvil
+    }
+  }
+
+  // Ejecutar al cargar y al hacer scroll
+  window.addEventListener('scroll', updateDesktopNavAppearance);
+  window.addEventListener('resize', updateDesktopNavAppearance); // También al redimensionar
+  updateDesktopNavAppearance(); // Verificar la posición inicial
 });
