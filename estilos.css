@@ -231,12 +231,31 @@ footer {
 
 @media (max-width: 768px) {
   .footer-container {
-    padding: 0 15px;
+    padding: 0 60px 0 15px;
     gap: 20px;
   }
 
+  .footer-left,
   .footer-right {
-    display: none;
+    min-width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  .footer-right {
+    display: none; /* Ocultar la sección de redes sociales en el footer en móvil */
+  }
+
+  .footer-container p {
+    text-align: center;
+    margin-bottom: 8px;
+    line-height: 1.6;
+    font-size: 0.9rem;
+  }
+
+  .footer-bottom-text {
+    text-align: center;
+    padding: 0 60px 0 15px;
   }
 
   .mobile-menu-button {
