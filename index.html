@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Santiago - Nutrición Deportiva</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Custom CSS -->
     <link href="estilos.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   </head>
@@ -18,7 +25,18 @@
     <div class="mobile-menu">
       <div class="mobile-menu-header">
         <h3>Menú</h3>
-        <button class="close-menu">×</button>
+        <div class="mobile-header-controls">
+          <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox-mobile">
+              <input type="checkbox" id="checkbox-mobile" />
+              <div class="slider round">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+              </div>
+            </label>
+          </div>
+          <button class="close-menu">×</button>
+        </div>
       </div>
       <nav class="mobile-nav">
         <a href="#sobre-mi">Sobre mí</a>
@@ -42,6 +60,15 @@
         <a href="#planes">Planes</a>
         <a href="#faq">Preguntas Frecuentes</a>
         <a href="#testimonios">Testimonios</a>
+        <div class="theme-switch-wrapper">
+          <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round">
+              <i class="fas fa-sun"></i>
+              <i class="fas fa-moon"></i>
+            </div>
+          </label>
+        </div>
       </div>
     </nav>
     <header>
@@ -50,7 +77,7 @@
       <a class="cta" href="#">Reservá tu consulta</a>
     </header>
 
-    <section id="sobre-mi">
+    <section id="sobre-mi" data-aos="fade-up">
       <h2>Sobre mí</h2>
       <div class="section-content">
         <p>Soy Santiago, licenciado en nutrición especializado en el área deportiva. Trabajo con personas activas, atletas amateur y profesionales que desean optimizar su rendimiento a través de la alimentación.</p>
@@ -58,7 +85,7 @@
       </div>
     </section>
     
-    <section id="consultorio-fisico">
+    <section id="consultorio-fisico" data-aos="fade-up" data-aos-delay="100">
       <h2>Mi Consultorio Físico</h2>
       <div class="section-content">
         <p>Aquí puedes describir tu consultorio físico. Menciona su ubicación, el ambiente, los servicios presenciales que ofreces o cualquier detalle relevante que tus pacientes deban saber sobre las consultas en persona.</p>
@@ -66,29 +93,29 @@
       </div>
     </section>
     
-    <section id="servicios">
+    <section id="servicios" data-aos="fade-up">
       <h2>Servicios</h2>
       <ul>
-        <li>Consultas personalizadas</li>
-        <li>Planes de nutrición deportiva</li>
-        <li>Seguimiento online</li>
-        <li>Charlas y talleres</li>
+        <li data-aos="fade-right" data-aos-delay="100">Consultas personalizadas</li>
+        <li data-aos="fade-right" data-aos-delay="200">Planes de nutrición deportiva</li>
+        <li data-aos="fade-right" data-aos-delay="300">Seguimiento online</li>
+        <li data-aos="fade-right" data-aos-delay="400">Charlas y talleres</li>
       </ul>
     </section>
-    <section id="beneficios">
+    <section id="beneficios" data-aos="fade-up">
       <h2>Beneficios de trabajar conmigo</h2>
       <ul>
-        <li>Planes totalmente personalizados</li>
-        <li>Seguimiento cercano y constante</li>
-        <li>Orientación basada en evidencia científica</li>
-        <li>Resultados visibles y sostenibles</li>
+        <li data-aos="fade-left" data-aos-delay="100">Planes totalmente personalizados</li>
+        <li data-aos="fade-left" data-aos-delay="200">Seguimiento cercano y constante</li>
+        <li data-aos="fade-left" data-aos-delay="300">Orientación basada en evidencia científica</li>
+        <li data-aos="fade-left" data-aos-delay="400">Resultados visibles y sostenibles</li>
       </ul>
     </section>
-    <section id="planes">
+    <section id="planes" data-aos="fade-up">
       <h2>Planes de nutrición</h2>
       <p>Diseñados para adaptarse a tus objetivos, nivel de actividad y estilo de vida. Elegí el plan que mejor se ajuste a vos:</p>
       <div class="planes-container">
-        <div class="plan">
+        <div class="plan" data-aos="fade-up" data-aos-delay="100">
           <h3>Plan Inicial</h3>
           <p>Ideal para quienes quieren empezar a mejorar su alimentación deportiva con una guía clara y personalizada.</p>
           <ul>
@@ -97,7 +124,7 @@
             <li>Recomendaciones generales de hábitos</li>
           </ul>
         </div>
-        <div class="plan">
+        <div class="plan" data-aos="fade-up" data-aos-delay="200">
           <h3>Plan Progreso</h3>
           <p>Perfecto para deportistas que buscan optimizar su rendimiento y avanzar con seguimiento constante.</p>
           <ul>
@@ -106,7 +133,7 @@
             <li>Indicaciones para pre, intra y post entrenamiento</li>
           </ul>
         </div>
-        <div class="plan">
+        <div class="plan" data-aos="fade-up" data-aos-delay="300">
           <h3>Plan Competitivo</h3>
           <p>Orientado a atletas con demandas específicas de rendimiento, competición o cambio de categoría.</p>
           <ul>
@@ -115,7 +142,7 @@
             <li>Soporte en preparación pre competencia</li>
           </ul>
         </div>
-        <div class="plan">
+        <div class="plan" data-aos="fade-up" data-aos-delay="400">
           <h3>Plan Mantenimiento</h3>
           <p>Ideal para quienes ya alcanzaron sus objetivos y buscan mantener hábitos saludables a largo plazo.</p>
           <ul>
@@ -277,6 +304,22 @@
       <a href="https://wa.me/+5493517431175" target="_blank" class="social-tab whatsapp" title="WhatsApp"></a>
       <a href="https://maps.app.goo.gl/jLy5Yo3pcgidt99Z9" target="_blank" class="social-tab location" title="Ubicación"></a>
     </div>
+    <!-- Botón Volver Arriba -->
+    <button id="back-to-top" class="back-to-top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
     <script src="script.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Inicializar AOS
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+      });
+    </script>
   </body>
 </html>
