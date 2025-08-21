@@ -302,18 +302,18 @@ const currentTheme = localStorage.getItem('theme');
 // Set initial logo based on theme
 if (currentTheme) {
   document.documentElement.setAttribute('data-bs-theme', currentTheme);
-  if (currentTheme === 'dark') {
-    toggleSwitchDesktop.checked = true;
-    toggleSwitchMobile.checked = true;
-    if (desktopLogo) desktopLogo.src = '/logoOscuro.png'; // Set dark logo initially
-  } else {
-    if (desktopLogo) desktopLogo.src = '/logo.png'; // Set light logo initially
-  }
+      if (currentTheme === 'dark') {
+      toggleSwitchDesktop.checked = true;
+      toggleSwitchMobile.checked = true;
+      if (desktopLogo) desktopLogo.src = 'logoOscuro.png'; // Set dark logo initially
+    } else {
+      if (desktopLogo) desktopLogo.src = 'logo.png'; // Set light logo initially
+    }
 } else {
     // Default to light theme and light logo if no theme is stored
     document.documentElement.setAttribute('data-bs-theme', 'light');
     localStorage.setItem('theme', 'light');
-    if (desktopLogo) desktopLogo.src = '/logo.png';
+    if (desktopLogo) desktopLogo.src = 'logo.png';
     toggleSwitchDesktop.checked = false;
     toggleSwitchMobile.checked = false;
 }
@@ -322,7 +322,7 @@ function switchTheme(e) {
   if (e.target.checked) {
     document.documentElement.setAttribute('data-bs-theme', 'dark');
     localStorage.setItem('theme', 'dark');
-    if (desktopLogo) desktopLogo.src = '/logoOscuro.png'; // Change logo to dark
+    if (desktopLogo) desktopLogo.src = 'logoOscuro.png'; // Change logo to dark
     // Sincronizar el otro switch
     if (e.target.id === 'checkbox') {
       toggleSwitchMobile.checked = true;
@@ -332,7 +332,7 @@ function switchTheme(e) {
   } else {
     document.documentElement.setAttribute('data-bs-theme', 'light');
     localStorage.setItem('theme', 'light');
-    if (desktopLogo) desktopLogo.src = '/logo.png'; // Change logo to light
+    if (desktopLogo) desktopLogo.src = 'logo.png'; // Change logo to light
     // Sincronizar el otro switch
     if (e.target.id === 'checkbox') {
       toggleSwitchMobile.checked = false;

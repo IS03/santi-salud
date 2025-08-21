@@ -1568,10 +1568,18 @@ html {
 }
 
 .desktop-nav .logo img {
-  height: 150px;
+  height: 200px;
   width: auto;
+  max-width: 200px;
   padding-top: 10px;
   padding-bottom: 5px;
+  transition: all 0.3s ease;
+}
+
+.desktop-nav.scrolled .logo img {
+  height: 120px;
+  padding-top: 5px;
+  padding-bottom: 3px;
 }
 
 .desktop-nav .nav-links {
