@@ -212,8 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuLinks = document.querySelectorAll('.mobile-nav a');
   const header = document.querySelector('header');
 
-  // Función para controlar el color del botón según el scroll
-  function updateMenuButtonColor() {
+  // Función para controlar la aparición de la barra móvil según el scroll
+  function updateMobileNavVisibility() {
     const headerBottom = header.offsetTop + header.offsetHeight;
     if (window.scrollY > headerBottom - 50) {
       menuButton.classList.add('scrolled');
@@ -224,9 +224,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Actualizar color al cargar y al hacer scroll
-  window.addEventListener('scroll', updateMenuButtonColor);
-  updateMenuButtonColor();
+  // Actualizar visibilidad al cargar y al hacer scroll
+  window.addEventListener('scroll', updateMobileNavVisibility);
+  updateMobileNavVisibility();
 
   // Abrir/Cerrar menú y transformar botón
   menuButton.addEventListener('click', () => {
@@ -305,15 +305,15 @@ if (currentTheme) {
       if (currentTheme === 'dark') {
       toggleSwitchDesktop.checked = true;
       toggleSwitchMobile.checked = true;
-      if (desktopLogo) desktopLogo.src = 'logoOscuro.png'; // Set dark logo initially
+      if (desktopLogo) desktopLogo.src = 'img/logoOscuro.png'; // Set dark logo initially
     } else {
-      if (desktopLogo) desktopLogo.src = 'logo.png'; // Set light logo initially
+      if (desktopLogo) desktopLogo.src = 'img/logo.png'; // Set light logo initially
     }
 } else {
     // Default to light theme and light logo if no theme is stored
     document.documentElement.setAttribute('data-bs-theme', 'light');
     localStorage.setItem('theme', 'light');
-    if (desktopLogo) desktopLogo.src = 'logo.png';
+    if (desktopLogo) desktopLogo.src = 'img/logo.png';
     toggleSwitchDesktop.checked = false;
     toggleSwitchMobile.checked = false;
 }
@@ -322,7 +322,7 @@ function switchTheme(e) {
   if (e.target.checked) {
     document.documentElement.setAttribute('data-bs-theme', 'dark');
     localStorage.setItem('theme', 'dark');
-    if (desktopLogo) desktopLogo.src = 'logoOscuro.png'; // Change logo to dark
+    if (desktopLogo) desktopLogo.src = 'img/logoOscuro.png'; // Change logo to dark
     // Sincronizar el otro switch
     if (e.target.id === 'checkbox') {
       toggleSwitchMobile.checked = true;
@@ -332,7 +332,7 @@ function switchTheme(e) {
   } else {
     document.documentElement.setAttribute('data-bs-theme', 'light');
     localStorage.setItem('theme', 'light');
-    if (desktopLogo) desktopLogo.src = 'logo.png'; // Change logo to light
+    if (desktopLogo) desktopLogo.src = 'img/logo.png'; // Change logo to light
     // Sincronizar el otro switch
     if (e.target.id === 'checkbox') {
       toggleSwitchMobile.checked = false;

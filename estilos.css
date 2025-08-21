@@ -21,11 +21,18 @@
   --nav-bg: rgba(26, 159, 143, 0.5);
 
   @media (max-width: 768px) {
+    
     .mobile-menu-header h3 {
       color: var(--text-color);
     }
     .mobile-nav a {
       color: var(--text-color);
+    }
+    .mobile-nav a:active {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .mobile-menu-header {
+      background: rgba(255, 255, 255, 0.05);
     }
   }
 
@@ -282,7 +289,7 @@ footer {
 
 @media (max-width: 768px) {
   .footer-container {
-    padding: 0 60px 0 15px;
+    padding: 0 15px;
     gap: 20px;
   }
 
@@ -306,7 +313,7 @@ footer {
 
   .footer-bottom-text {
     text-align: center;
-    padding: 0 60px 0 15px;
+    padding: 0 15px;
   }
 
   .mobile-menu-button {
@@ -649,7 +656,7 @@ footer {
   .planes-container {
     grid-template-columns: 1fr;
     gap: 20px;
-    padding: 0 60px 0 10px;
+    padding: 0 10px;
   }
 
   #planes .plan {
@@ -718,9 +725,62 @@ footer {
   font-size: 0.95rem;
 }
 
+/* Foto personal */
+.foto-personal-container {
+  margin: 30px auto;
+  max-width: 200px;
+  text-align: center;
+}
+
+.foto-personal {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  border: 4px solid var(--header-bg);
+  transition: all 0.3s ease;
+}
+
+.foto-personal:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+}
+
+/* Mapa del consultorio */
+.mapa-container {
+  margin-top: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.mapa-container iframe {
+  display: block;
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: 12px;
+}
+
+.mapa-container .mapa-dark {
+  display: none;
+}
+
+[data-bs-theme="dark"] .mapa-container .mapa-light {
+  display: none;
+}
+
+[data-bs-theme="dark"] .mapa-container .mapa-dark {
+  display: block;
+}
+
 /* IMC Calculadora */
 #imc {
-  padding: 40px 70px 40px 20px;
+  padding: 40px 20px;
   margin-bottom: 30px;
 }
 
@@ -965,7 +1025,7 @@ footer {
   }
 
   #imc {
-    padding: 40px 70px 40px 20px;
+    padding: 40px 20px;
     margin-bottom: 30px;
   }
 }
@@ -986,7 +1046,7 @@ footer {
 .testimonios-container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 60px 0 0;
+  padding: 0;
   overflow: hidden;
   position: relative;
 }
@@ -1335,52 +1395,77 @@ img {
   display: none;
   position: fixed;
   top: 0;
+  left: 0;
   right: 0;
-  width: 40px;
-  height: 100vh;
-  flex-direction: column;
-  justify-content: flex-start;
+  width: 100%;
+  height: 50px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
   z-index: 1000;
-  padding: 20px 5px;
-  background: rgba(43, 168, 137, 0.2);
-  backdrop-filter: blur(5px);
+  padding: 0 15px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
   transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
 }
 
-.mobile-menu-button span {
+.mobile-menu-button.scrolled {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-button .menu-text {
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.5px;
+  flex: 1;
+  text-align: center;
+}
+
+.mobile-menu-button .hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-menu-button .hamburger span {
   display: block;
-  width: 100%;
-  height: 3px;
-  background-color: white;
-  border-radius: 3px;
+  width: 22px;
+  height: 2.5px;
+  background-color: var(--text-color);
+  border-radius: 2px;
   transition: all 0.3s ease;
-  margin-bottom: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.mobile-menu-button span:first-child {
-  margin-top: 5px;
+.mobile-menu-button.active .hamburger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
 }
 
-.mobile-menu-button.active span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.mobile-menu-button.active span:nth-child(2) {
+.mobile-menu-button.active .hamburger span:nth-child(2) {
   opacity: 0;
 }
 
-.mobile-menu-button.active span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+.mobile-menu-button.active .hamburger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .mobile-menu-button.active {
-  background: rgba(43, 168, 137, 0.1);
+  background: var(--nav-bg);
+  box-shadow: 0 2px 15px rgba(0,0,0,0.15);
 }
 
-.mobile-menu-button.scrolled span {
-  background-color: #2BA889;
-}
+
 
 /* Hide the original close button */
 .close-menu {
@@ -1390,36 +1475,33 @@ img {
 .mobile-menu {
   position: fixed;
   top: 0;
-  right: -70%;
-  width: 70%;
+  left: 0;
+  right: 0;
+  width: 100%;
   height: 100vh;
-  background: rgba(43, 168, 137, 0.2);
-  backdrop-filter: blur(8px);
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
   z-index: 999;
-  transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(-100%);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .mobile-menu.active {
-  right: 0;
+  transform: translateY(0);
 }
 
-.mobile-menu.scrolled .mobile-menu-header h3,
-.mobile-menu.scrolled .close-menu {
-  color: #2BA889;
-}
 
-.mobile-menu.scrolled .mobile-nav a {
-  color: #000000;
-}
 
 .mobile-menu-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 15px;
-  border-bottom: 1px solid #eee;
+  padding: 65px 20px 15px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   transition: border-color 0.3s ease;
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .mobile-header-controls {
@@ -1461,13 +1543,15 @@ img {
   top: 6px;
 }
 
-.mobile-menu.scrolled .mobile-menu-header {
-  border-bottom-color: #2BA889;
-}
+
 
 .mobile-menu-header h3 {
   margin: 0;
-  color: #ffffff;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 16px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.5px;
 }
 
 .mobile-nav {
@@ -1478,9 +1562,9 @@ img {
 }
 
 .mobile-nav a {
-  color: #333;
+  color: var(--text-color);
   text-decoration: none;
-  padding: 12px 20px;
+  padding: 15px 20px;
   border-radius: 12px;
   transition: all 0.3s ease;
   font-weight: bold;
@@ -1489,6 +1573,12 @@ img {
   overflow: hidden;
   margin: 0 10px;
   border: none;
+  background: transparent;
+}
+
+.mobile-nav a:active {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(0.98);
 }
 
 .mobile-nav a:hover {
@@ -1521,7 +1611,7 @@ section {
 
 @media (max-width: 768px) {
   section {
-    padding: 40px 60px 40px 20px;
+    padding: 40px 20px;
   }
 }
 
@@ -1635,6 +1725,10 @@ html {
     /* El padding-top del body se manejará con la altura de la nav */
   }
 
+  .logo-mobile {
+    display: none;
+  }
+
   /* Ocultar el menú móvil y su botón en desktop */
   .mobile-menu,
   .mobile-menu-button {
@@ -1651,21 +1745,47 @@ html {
     display: none !important;
   }
 
-  /* Asegurar que el body no tenga padding top en móvil */
+  /* Agregar padding top para la barra de navegación móvil */
   body {
     padding-top: 0;
+  }
+  
+  /* Estilos del logo móvil */
+  .mobile-menu-button .logo-mobile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .mobile-menu-button .logo-mobile img {
+    height: 80px;
+    width: auto;
+    max-width: 130px;
+    transition: all 0.3s ease;
+    filter: brightness(1.1);
+  }
+  
+  .mobile-menu-button .logo-mobile .logo-dark {
+    display: none;
+  }
+  
+  [data-bs-theme="dark"] .mobile-menu-button .logo-mobile .logo-light {
+    display: none;
+  }
+  
+  [data-bs-theme="dark"] .mobile-menu-button .logo-mobile .logo-dark {
+    display: block;
   }
 }
 
 @media (max-width: 768px) {
   header {
-    padding: 30px 60px 50px 15px;
+    padding: 30px 15px 50px 15px;
   }
 
   .cta {
     position: absolute;
     bottom: -20px;
-    left: calc(50% - 30px); /* Ajustar el centrado considerando la barra de navegación */
+    left: 50%;
     transform: translateX(-50%);
   }
 }
@@ -1837,4 +1957,70 @@ input:checked + .slider:before {
   color: var(--text-color);
 }
 
-  
+/* Sección Trabajando (carrusel) */
+#trabajando {
+  padding-top: 20px; /* un poco menos que otras secciones para acercarla a Sobre mí */
+}
+
+.working-carousel .carousel-inner {
+  background: var(--card-bg);
+  height: 800px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+[data-bs-theme="dark"] .working-carousel .carousel-inner {
+  border-color: rgba(255,255,255,0.08);
+}
+
+.working-carousel img {
+  object-fit: cover;           /* recorta suave para llenar el contenedor */
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: contrast(1.02) saturate(1.02);
+}
+
+/* Indicadores un poco más visibles y con color de marca */
+.working-carousel .carousel-indicators [data-bs-target] {
+  width: 10px; height: 10px; border-radius: 50%;
+  background-color: rgba(43,168,137,0.35);
+}
+.working-carousel .carousel-indicators .active {
+  background-color: #2BA889;
+}
+
+/* Controles con mejor contraste en ambos temas */
+.working-carousel .carousel-control-prev-icon,
+.working-carousel .carousel-control-next-icon {
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.25));
+}
+
+/* Carrusel: ancho y alto controlados */
+#trabajando #trabajandoCarousel {
+  max-width: 900px;   /* cambiá este valor para el ancho */
+  margin: 0 auto;
+}
+
+#trabajando #trabajandoCarousel .ratio {
+  --bs-aspect-ratio: 45%; /* cambiá este valor para el alto */
+}
+
+@media (max-width: 768px) {
+  #trabajando #trabajandoCarousel {
+    max-width: 100%;
+  }
+  #trabajando #trabajandoCarousel .ratio {
+    --bs-aspect-ratio: 60%;
+  }
+  .working-carousel .carousel-inner {
+    background: var(--card-bg);
+    height: 420px;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+}
+
+#trabajando #trabajandoCarousel .carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
